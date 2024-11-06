@@ -1,12 +1,14 @@
+version: '3.8'
+
 services:
   web:
     image: nginx:latest
     ports:
       - "8081:80"
+    volumes:
+      - ./html:/usr/share/nginx/html  # Make sure this points to the `html` directory
     depends_on:
       - db
-    volumes:
-      - ./html:/usr/share/nginx/html
 
   db:
     image: mysql:5.7
